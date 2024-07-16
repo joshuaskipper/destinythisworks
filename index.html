@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embed Model-Driven App</title>
+    <title>Responsive iframe Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,38 +10,43 @@
             padding: 0;
             box-sizing: border-box;
         }
-        header, footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        main {
+        .container {
+            max-width: 100%;
             padding: 1em;
         }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        iframe {
+        .responsive-iframe {
             width: 100%;
-            height: 720px; /* Adjust height as needed */
+            height: 100%;
+            min-height: 500px; /* Adjust as needed */
+            border: none;
+        }
+        /* Optional: Add a wrapper to maintain aspect ratio (e.g., 16:9) */
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <main>
-        <div class="container">
-            <h2>Embed Model-Driven App</h2>
-            <iframe src="https://orgc39a0905.crm.dynamics.com/main.aspx?appid=f5f31561-3042-ef11-8409-0022482ab35e" title="Model-Driven App"></iframe>
+    <div class="container">
+        <!-- Without aspect ratio wrapper -->
+        <iframe src="https://orgc39a0905.crm.dynamics.com/main.aspx?appid=f5f31561-3042-ef11-8409-0022482ab35e" class="responsive-iframe"></iframe>
+        
+        <!-- With aspect ratio wrapper (optional) -->
+        <!--
+        <div class="iframe-wrapper">
+            <iframe src="URL_OF_YOUR_MODEL_DRIVEN_APP"></iframe>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Website</p>
-    </footer>
+        -->
+    </div>
 </body>
 </html>
